@@ -61,7 +61,7 @@ class Level:
                     sys.exit()
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(('Enemy1', 'Enemy2'))
-                    self.entity_list.append(EntityFactory.get_entity('Enemy1'))
+                    self.entity_list.append(EntityFactory.get_entity(choice))
 
         pass
 
