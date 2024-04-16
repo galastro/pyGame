@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import random
 import sys
 
@@ -7,7 +7,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import COLOR_WHITE, MENU_OPTION, EVENT_ENEMY
+from code.Const import COLOR_WHITE, MENU_OPTION, EVENT_ENEMY, WIN_HEIGHT, COLOR_GREEN, COLOR_CYAN
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -42,9 +42,14 @@ class Level:
                     shoot = ent.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
+                if ent.name == 'Player1':
+                    self.level_text(14, f'player1 - Health: {ent.health} | Score: {ent.score}', COLOR_GREEN, (10, 25))
+                if ent.name == 'Player2':
+                    self.level_text(14, f'player2 - Health: {ent.health} | Score: {ent.score}', COLOR_CYAN, (10, 45))
 
-            self.level_text(14, f'fps: {clock.get_fps():.0f}', COLOR_WHITE, (10, 10))
-            self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (10, 25))
+            self.level_text(14, f'fps: {clock.get_fps():.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE,
+                            (10, WIN_HEIGHT - 20))
             pygame.display.flip()
 
             EntityMediator.verify_collision(entity_list=self.entity_list)
