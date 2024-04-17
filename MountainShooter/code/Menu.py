@@ -6,7 +6,7 @@ import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import WIN_WIDTH, COLOR_ORANGE, MENU_OPTION, COLOR_WHITE, COLOR_YELLOW
+from code.Const import WIN_WIDTH, COLOR_ORANGE, MENU_OPTION, COLOR_WHITE, COLOR_YELLOW, MENU_OPTION_SPACE
 
 
 class Menu:
@@ -28,10 +28,10 @@ class Menu:
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
                     self.menu_text(20, MENU_OPTION[i], COLOR_YELLOW, (
-                                                                                        (WIN_WIDTH / 2), 200 + 30 * i))
+                                                                                        (WIN_WIDTH / 2), MENU_OPTION_SPACE[i]))
                 else:
                     self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, (
-                                                                                        (WIN_WIDTH / 2), 200 + 30 * i))
+                                                                                        (WIN_WIDTH / 2), MENU_OPTION_SPACE[i]))
             pygame.display.flip()
             
             for event in pygame.event.get():
